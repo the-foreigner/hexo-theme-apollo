@@ -1,0 +1,49 @@
+mixin postInfo(item)
+    div(class="text-[#7f8c8d]")
+        != full_date(item.date, 'll')
+        if item.from && (is_home() || is_post())
+            a(href=item.from target="_blank" title=item.from class="ml-2 px-1.5 py-0.5 rounded text-xs text-white bg-[#E36B6B] no-underline")!= __('translated')
+
+
+//- Index Page
+mixin posts()
+  ul(class="list-none m-0 p-0 my-8")
+    - page.posts.each(function (item) {
+        li(class="py-4 pb-8")
+          article
+            +postInfo(item)
+            h2(class="text-[#2c3e50] text-4xl font-semibold hover:underline")
+              a(href=url_for(item.path) class="text-[#2c3e50]")
+                != item.title
+            div(class="post-content prose max-w-none")
+              != item.excerpt
+            a(href=url_for(item.path) class="text-[#42b983]")!= __('more')
+    - })
+
+//- Archive Page
+mixin postList()
+    div(class="max-w-125 mx-auto mt-20")
+        - var year = 0;
+        - var change = false;
+        - page.posts.each(function (item) {
+            - var itemYear = date(item.date, 'YYYY') - 0;
+            - change = year !== itemYear;
+            - year = change ? itemYear : year;
+            if change
+                h2(class="text-[#2c3e50] my-4")!= year
+            div(class="py-0.5 pl-5 sm:pl-[50px] flex items-baseline gap-4")
+                span(class="w-[125px] shrink-0 text-[#7f8c8d] text-base")
+                    != full_date(item.date, 'll')
+                a(href=url_for(item.path) class="text-base text-[#42b983]")
+                    != item.title
+        - })
+
+//- Post Page
+mixin post(item)
+    div(class="pt-4")
+        article
+            +postInfo(item)
+            h1(class="my-[0.65em] text-[#2c3e50] text-[1.5em]") 
+              != item.title
+            div(class="post-content prose max-w-none")
+              != item.content

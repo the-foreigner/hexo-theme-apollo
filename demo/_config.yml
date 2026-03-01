@@ -1,0 +1,16 @@
+public_dir: ../dist
+
+title: Apollo Demo
+author: Demo
+language: en
+timezone: ''
+
+url: http://localhost:4000
+
+theme: apollo
+
+archive_generator:
+  per_page: 0
+  yearly: false
+  monthly: false
+  daily: false

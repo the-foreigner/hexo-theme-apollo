@@ -1,0 +1,357 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@source "../../layout/**/*.pug";
+
+/* ─── Source Sans 3 — all weights ────────────────────── */
+
+@font-face { font-family: 'sourcesanspro'; src: url('../font/source-sans-3-latin-200-normal.woff2') format('woff2'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'sourcesanspro'; src: url('../font/source-sans-3-latin-200-italic.woff2') format('woff2'); font-weight: 200; font-style: italic; font-display: swap; }
+@font-face { font-family: 'sourcesanspro'; src: url('../font/source-sans-3-latin-300-normal.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'sourcesanspro'; src: url('../font/source-sans-3-latin-300-italic.woff2') format('woff2'); font-weight: 300; font-style: italic; font-display: swap; }
+@font-face { font-family: 'sourcesanspro'; src: url('../font/source-sans-3-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'sourcesanspro'; src: url('../font/source-sans-3-latin-400-italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'sourcesanspro'; src: url('../font/source-sans-3-latin-500-normal.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'sourcesanspro'; src: url('../font/source-sans-3-latin-500-italic.woff2') format('woff2'); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: 'sourcesanspro'; src: url('../font/source-sans-3-latin-600-normal.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'sourcesanspro'; src: url('../font/source-sans-3-latin-600-italic.woff2') format('woff2'); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: 'sourcesanspro'; src: url('../font/source-sans-3-latin-700-normal.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'sourcesanspro'; src: url('../font/source-sans-3-latin-700-italic.woff2') format('woff2'); font-weight: 700; font-style: italic; font-display: swap; }
+@font-face { font-family: 'sourcesanspro'; src: url('../font/source-sans-3-latin-800-normal.woff2') format('woff2'); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: 'sourcesanspro'; src: url('../font/source-sans-3-latin-800-italic.woff2') format('woff2'); font-weight: 800; font-style: italic; font-display: swap; }
+@font-face { font-family: 'sourcesanspro'; src: url('../font/source-sans-3-latin-900-normal.woff2') format('woff2'); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'sourcesanspro'; src: url('../font/source-sans-3-latin-900-italic.woff2') format('woff2'); font-weight: 900; font-style: italic; font-display: swap; }
+
+/* ─── Config ──────────────────────────────────────────── */
+/* Change --base-font-size here to scale everything        */
+
+:root {
+    --base-font-size: 18px;
+}
+
+/* ─── Base ────────────────────────────────────────────── */
+
+@layer base {
+    ::selection {
+        color: #fff;
+        background-color: #42b983;
+    }
+
+    html {
+        font-size: var(--base-font-size);
+        width: 100%;
+        height: 100%;
+    }
+
+    body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        color: #34495e;
+        line-height: 1.6;
+        background-color: #fff;
+        font-family: 'sourcesanspro', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    a, a:active {
+        color: #2c3e50;
+        text-decoration: none;
+    }
+
+    hr {
+        border: 0;
+    }
+
+    iframe, video {
+        max-width: 100%;
+        margin: 1rem auto;
+        display: block;
+    }
+}
+
+/* ─── Components ──────────────────────────────────────── */
+
+@layer components {
+    /* Nav active / hover underline */
+    a.nav-list-link.active,
+    a.nav-list-link:hover {
+        border-bottom: 2px solid #42b983;
+    }
+
+    /* Paginator buttons */
+    .paginator {
+        margin: 4em 0;
+        text-align: center;
+    }
+
+    .paginator .prev,
+    .paginator .next {
+        display: inline-block;
+        margin: 0 4px;
+        padding: 4px 12px;
+        border-radius: 4px;
+        border-bottom: 4px solid #3aa373;
+        font-size: 14px;
+        color: #fff;
+        background-color: #4fc08d;
+    }
+
+    .paginator .prev:hover,
+    .paginator .next:hover {
+        background-color: #22bd77;
+        border-bottom-color: #3aa373;
+    }
+
+    /* Disqus */
+    #disqus_thread {
+        margin-bottom: 2em;
+    }
+
+    /* ── Post content (prose) ─────────────────────────── */
+
+    /* Theme color overrides for Typography plugin */
+    .post-content {
+        --tw-prose-body: #34495e;
+        --tw-prose-headings: #2c3e50;
+        --tw-prose-links: #42b983;
+        --tw-prose-bold: #2c3e50;
+        --tw-prose-quotes: #7f8c8d;
+        --tw-prose-quote-borders: #42b983;
+        --tw-prose-bullets: #34495e;
+        --tw-prose-counters: #34495e;
+        --tw-prose-hr: #ddd;
+        --tw-prose-th-borders: #ddd;
+        --tw-prose-td-borders: #eee;
+        --tw-prose-code: #e96900;
+        --tw-prose-pre-code: #525252;
+        --tw-prose-pre-bg: #f8f8f8;
+    }
+
+    /* "#" anchor marker before h2/h3 headings */
+    .post-content h2,
+    .post-content h3 {
+        position: relative;
+    }
+
+    .post-content h2 a::before,
+    .post-content h3 a::before {
+        content: "#";
+        color: #42b983;
+        position: absolute;
+        left: -0.7em;
+        top: -4px;
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+    .post-content h4 a::before,
+    .post-content h5 a::before,
+    .post-content h6 a::before {
+        content: "";
+    }
+
+    .post-content a {
+        word-break: break-all;
+    }
+
+    .post-content > table,
+    .post-content > figure.highlight {
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.125);
+    }
+
+    /* ── Tip block ────────────────────────────────────── */
+
+    .tip {
+        position: relative;
+        margin: 2em 0;
+        padding: 12px 24px 12px 30px;
+        border-left: 4px solid #f66;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+        background-color: #f8f8f8;
+    }
+
+    .tip br {
+        display: none;
+    }
+
+    .tip::before {
+        position: absolute;
+        top: 14px;
+        left: -12px;
+        content: "!";
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        color: #fff;
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: bold;
+        text-align: center;
+        background-color: #f66;
+        font-family: 'Dosis', 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    /* ── Image lightbox ───────────────────────────────── */
+
+    #mask {
+        position: fixed;
+        overflow: scroll;
+        width: 100%;
+        height: 100%;
+        padding: 1em 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 10;
+    }
+
+    #mask-image {
+        max-width: 95%;
+    }
+
+    /* ── Code blocks ──────────────────────────────────── */
+
+    code, pre {
+        font-size: 0.8em;
+        background-color: #f8f8f8;
+        font-family: 'Roboto Mono', Monaco, courier, monospace;
+    }
+
+    .highlight {
+        position: relative;
+        margin: 1em 0;
+        border-radius: 2px;
+        line-height: 1.1em;
+        background-color: #f8f8f8;
+        overflow-x: auto;
+    }
+
+    .highlight table,
+    .highlight tr,
+    .highlight td {
+        width: 100%;
+        border-collapse: collapse;
+        padding: 0;
+        margin: 0;
+    }
+
+    .highlight .gutter {
+        display: none;
+    }
+
+    .highlight .code pre {
+        padding: 1.2em 1.4em;
+        line-height: 1.5em;
+        margin: 0;
+    }
+
+    .highlight .code pre .line {
+        width: auto;
+        height: 18px;
+    }
+
+    /* Language labels */
+    .highlight .code::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: #ccc;
+        text-align: right;
+        font-size: 0.75em;
+        padding: 5px 10px 0;
+        line-height: 15px;
+        height: 15px;
+        font-weight: 600;
+    }
+
+    .highlight.html .code::after  { content: 'HTML'; }
+    .highlight.js .code::after    { content: 'JS'; }
+    .highlight.bash .code::after  { content: 'BASH'; }
+    .highlight.css .code::after   { content: 'CSS'; }
+    .highlight.scss .code::after  { content: 'SCSS'; }
+    .highlight.diff .code::after  { content: 'DIFF'; }
+    .highlight.java .code::after  { content: 'JAVA'; }
+    .highlight.xml .code::after   { content: 'XML'; }
+    .highlight.python .code::after { content: 'PYTHON'; }
+    .highlight.json .code::after  { content: 'JSON'; }
+    .highlight.swift .code::after { content: 'SWIFT'; }
+    .highlight.ruby .code::after  { content: 'RUBY'; }
+    .highlight.perl .code::after  { content: 'PERL'; }
+    .highlight.php .code::after   { content: 'PHP'; }
+    .highlight.c .code::after     { content: 'C'; }
+    .highlight.cpp .code::after   { content: 'C++'; }
+    .highlight.ts .code::after    { content: 'TS'; }
+
+    /* ── Syntax highlighting ──────────────────────────── */
+
+    pre { color: #525252; }
+
+    pre .function .keyword,
+    pre .constant { color: #0092db; }
+
+    pre .keyword,
+    pre .attribute { color: #e96900; }
+
+    pre .number,
+    pre .literal { color: #ae81ff; }
+
+    pre .tag,
+    pre .tag .title,
+    pre .change,
+    pre .winutils,
+    pre .flow,
+    pre .lisp .title,
+    pre .clojure .built_in,
+    pre .nginx .title,
+    pre .tex .special { color: #2973b7; }
+
+    pre .symbol,
+    pre .symbol .string,
+    pre .value,
+    pre .regexp { color: #42b983; }
+
+    pre .title { color: #83B917; }
+
+    pre .tag .value,
+    pre .string,
+    pre .subst,
+    pre .haskell .type,
+    pre .preprocessor,
+    pre .ruby .class .parent,
+    pre .built_in,
+    pre .sql .aggregate,
+    pre .django .template_tag,
+    pre .django .variable,
+    pre .smalltalk .class,
+    pre .javadoc,
+    pre .django .filter .argument,
+    pre .smalltalk .localvars,
+    pre .smalltalk .array,
+    pre .attr_selector,
+    pre .pseudo,
+    pre .addition,
+    pre .stream,
+    pre .envvar,
+    pre .apache .tag,
+    pre .apache .cbracket,
+    pre .tex .command,
+    pre .prompt { color: #42b983; }
+
+    pre .comment,
+    pre .java .annotation,
+    pre .python .decorator,
+    pre .template_comment,
+    pre .pi,
+    pre .doctype,
+    pre .shebang,
+    pre .apache .sqbracket,
+    pre .tex .formula { color: #b3b3b3; }
+
+    pre .deletion { color: #BA4545; }
+
+    pre .coffeescript .javascript,
+    pre .javascript .xml,
+    pre .tex .formula,
+    pre .xml .javascript,
+    pre .xml .vbscript,
+    pre .xml .css,
+    pre .xml .cdata { opacity: 0.5; }
+}
